@@ -11,25 +11,29 @@ class Account
 
   def make_deposit(amount)
     @balance += amount
-    save_transaction(amount)
+    save_transaction(:credit, amount)
   end
 
   def make_withdrawal(amount)
     @balance -= amount
-    save_transaction(-amount)
+    save_transaction(:debit, amount)
+  end
+
+  def get_statement()
+    statement = Statement.new(@transactions)
+    return statement.print
   end
 
   private
 
-  def save_transaction(amount)
-    new_transaction = Transaction.new(amount)
-    update_statement(new_transaction)
+  def save_transaction(transaction_type, amount)
+    new_transaction = Transaction.new(transaction_type, amount, @balance)
+    update_transactions(new_transaction)
   end
 
-  def update_statement(transaction)
+  def update_transactions(transaction)
     @transactions << transaction
   end
-
 
 
 end

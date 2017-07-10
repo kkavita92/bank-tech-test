@@ -4,6 +4,7 @@ describe Account do
   subject(:account) { described_class.new }
   let(:credit_transaction) { double :transaction }
 
+
   it 'should have a balance of zero by default' do
     expect(account.balance).to eq 0
   end
@@ -13,7 +14,6 @@ describe Account do
   end
 
   describe 'making a deposit' do
-
     before(:each) do
       deposit_amount = 1000
       account.make_deposit(deposit_amount)
@@ -26,7 +26,6 @@ describe Account do
     it 'should add new transaction to transaction list' do
       expect(account.transactions.length).to eq 1
     end
-
   end
 
   describe 'making a withdrawal' do
@@ -42,10 +41,5 @@ describe Account do
     it 'should add new transaction to transaction list' do
       expect(account.transactions.length).to eq 1
     end
-
   end
-
-
-
-
 end
