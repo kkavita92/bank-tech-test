@@ -9,37 +9,33 @@ describe Account do
     expect(account.balance).to eq 0
   end
 
-  it 'should have an empty list of transactions when created' do
-    expect(account.transactions).to be_empty
-  end
-
   describe 'making a deposit' do
     before(:each) do
-      deposit_amount = 1000
-      account.make_deposit(deposit_amount)
+      account.make_deposit(1000)
     end
 
     it 'should increase balance by amount deposited' do
       expect(account.balance).to eq 1000
     end
 
-    it 'should add new transaction to transaction list' do
-      expect(account.transactions.length).to eq 1
+    it 'handles floats as deposits' do
+      account.make_deposit(99.45)
+      expect(account.balance).to eq 1099.45
     end
   end
 
   describe 'making a withdrawal' do
     before(:each) do
-      withdrawal_amount = 1000
-      account.make_withdrawal(withdrawal_amount)
+      account.make_withdrawal(1000)
     end
 
     it 'should decrease balance by amount withdrawn' do
       expect(account.balance).to eq -1000
     end
 
-    it 'should add new transaction to transaction list' do
-      expect(account.transactions.length).to eq 1
+    it 'handles floats as withdrawals' do
+      account.make_withdrawal(99.45)
+      expect(account.balance).to eq -1099.45
     end
   end
 end

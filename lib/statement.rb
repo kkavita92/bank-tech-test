@@ -12,7 +12,12 @@ class Statement
   STATEMENT_HEADER = 'date || credit || debit || balance'
 
   def add_transaction_to_statement(transaction)
-    puts "#{transaction.date} || #{transaction.credit} || #{transaction.debit} || #{transaction.balance}"
+    transaction = [
+      transaction.date,
+      transaction.credit,
+      transaction.debit,
+      transaction.balance ]  
+    puts transaction.join(' || ')
   end
 
 end
