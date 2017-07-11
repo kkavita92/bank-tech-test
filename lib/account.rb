@@ -1,4 +1,5 @@
 require_relative './transaction'
+require_relative './statement'
 
 class Account
 
@@ -11,17 +12,16 @@ class Account
 
   def make_deposit(amount)
     @balance += amount
-    save_transaction(:credit, amount)
+    save_transaction(:deposit, amount)
   end
 
   def make_withdrawal(amount)
     @balance -= amount
-    save_transaction(:debit, amount)
+    save_transaction(:withdrawal, amount)
   end
 
-  def get_statement()
-    statement = Statement.new(@transactions)
-    return statement.print
+  def get_statement(statement = Statement.new)
+    return statement.print(@transactions)
   end
 
   private
@@ -34,6 +34,5 @@ class Account
   def update_transactions(transaction)
     @transactions << transaction
   end
-
 
 end
