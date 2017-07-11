@@ -12,6 +12,8 @@ class Transaction
     @amount unless deposit?
   end
 
+  private
+
   def initialize(transaction_type, amount, balance, date = Date.today)
     @type = transaction_type
     @amount = amount

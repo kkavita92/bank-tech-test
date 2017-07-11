@@ -11,12 +11,8 @@ class Statement
 
   STATEMENT_HEADER = 'date || credit || debit || balance'
 
-  def initialize
-  end
-
   def add_transaction_to_statement(transaction)
     puts "#{transaction.date} || #{transaction.credit} || #{transaction.debit} || #{transaction.balance}"
   end
-
 
 end
