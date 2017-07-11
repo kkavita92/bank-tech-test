@@ -1,6 +1,8 @@
 require_relative './transaction'
 require_relative './statement'
 
+class TransactionError < StandardError; end
+
 class Account
 
   attr_reader :balance
@@ -34,5 +36,4 @@ class Account
   def update_transactions(transaction)
     @transactions << transaction
   end
-
 end
