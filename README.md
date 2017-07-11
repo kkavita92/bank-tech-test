@@ -50,3 +50,9 @@ I want my bank statement to include the date of each transaction.
 ## My Approach
 
 ## On Reflection...
+
+Looking back, there are a few things I feel like I could have done differently:
+
+* I am not entirely happy with the fact that the Statement class is also responsible for printing itself. A separate Printer class perhaps?
+* There is a lot of formatting logic going on in Transaction class - again, maybe having a printer class could have absorbed this logic.
+* I quite liked the idea of the transactions array filled with Transaction objects in my Account class when I started. However, would it have been better if ```transactions = Statement.new``` instead, and my deposit and withdrawal methods had created new Transaction instances directly instead of doing so only at ```save_transaction```?
