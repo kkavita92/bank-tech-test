@@ -49,6 +49,11 @@ I want my bank statement to include the date of each transaction.
 
 ## My Approach
 
+I mapped a rough idea of the classes I expected to have and how they should interact
+with each other. I followed a strict TDD approach: (insert approach)
+
+I started off by building my Account class and then extracting methods into the Transaction and Statement classes when I felt they should belong there instead.
+
 ## On Reflection...
 
 Looking back, there are a few things I feel like I could have done differently:
@@ -56,3 +61,5 @@ Looking back, there are a few things I feel like I could have done differently:
 * I am not entirely happy with the fact that the Statement class is also responsible for printing itself. A separate Printer class perhaps?
 * There is a lot of formatting logic going on in Transaction class - again, maybe having a printer class could have absorbed this logic.
 * I quite liked the idea of the transactions array filled with Transaction objects in my Account class when I started. However, would it have been better if ```transactions = Statement.new``` instead, and my deposit and withdrawal methods had created new Transaction instances directly instead of doing so only at ```save_transaction```?
+* Some feedback I got during my code review has also pointed out that 'account.balance'
+does not need to be exposed as it detracts from the 'purity' of the code. It was recommended that calculating the balance does not need to belong in Account class at all, and could be restricted to the Statement class. Additionally, it was suggested that my 'account.make_withdrawal' and 'account.make_deposit' methods did not adhere strictly to SRP as they currently have two different responsibilities. 
