@@ -1,5 +1,4 @@
 require 'date'
-
 class Transaction
 
   attr_reader :balance, :date
@@ -26,7 +25,6 @@ class Transaction
   end
 
   def format_as_currency(number)
-     format('%.2f', number) unless number.nil?
-   end
-
+    format('%.2f', number) unless number.nil?
+  end
 end

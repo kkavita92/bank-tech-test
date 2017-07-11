@@ -9,15 +9,14 @@ class Statement
 
   private
 
-  STATEMENT_HEADER = 'date || credit || debit || balance'
+  STATEMENT_HEADER = 'date || credit || debit || balance'.freeze
 
   def add_transaction_to_statement(transaction)
     transaction = [
       transaction.date,
       transaction.credit,
       transaction.debit,
-      transaction.balance ]  
+      transaction.balance]
     puts transaction.join(' || ')
   end
-
 end
